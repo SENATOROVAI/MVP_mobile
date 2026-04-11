@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <title>Dentique Care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css?v=3" />
+    <script type="module" src="./main.js?v=2"></script>
+  </head>
+  <body>
+    <noscript>Для работы приложения нужен JavaScript.</noscript>
+
+    <div id="app-shell" class="app-shell" data-app-shell>
+      <div class="app-frame" data-mobile-frame>
+        <header class="app-status-bar" data-status-bar-slot></header>
+        <div class="app-header-slot" data-header-slot></div>
+
+        <main id="app-main" class="app-main" data-main-slot role="main" aria-live="polite" aria-busy="false">
+          <section id="screen-root" class="screen-root" data-screen-root>
+            <h1 class="sr-only">Стоматологическое приложение</h1>
+          </section>
+        </main>
+
+        <nav id="bottom-nav-slot" class="bottom-nav-slot" data-bottom-nav-slot aria-label="Основная навигация"></nav>
+      </div>
+
+      <div id="overlay-root" class="overlay-root" data-overlay-root aria-live="polite" aria-atomic="true"></div>
+      <div id="search-root" data-search-root></div>
+    </div>
+  </body>
+</html>
