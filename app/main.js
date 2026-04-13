@@ -1,4 +1,4 @@
-import data from './data.js?v=2';
+import data from './data.js?v=3';
 import {
   createBookingState,
   getSelectedCategory,
@@ -13,8 +13,13 @@ import {
   renderDoctorScreen,
   renderHomeScreen,
   renderServiceScreen,
-} from './bookingFlow.js?v=2';
-import { createDirectoryState, renderDirectoryScreen } from './sections.js?v=2';
+} from './bookingFlow.js?v=3';
+import {
+  createDirectoryState,
+  getDirectoryDetailMeta,
+  renderDirectoryDetailScreen,
+  renderDirectoryScreen,
+} from './sections.js?v=3';
 
 const store = {
   ...data,
@@ -54,7 +59,7 @@ function icon(name, className = 'icon-mask') {
 }
 
 function routeGroup(route) {
-  if (route === 'directory') {
+  if (route === 'directory' || route === 'directory-detail') {
     return 'directory';
   }
 
@@ -70,6 +75,14 @@ function resetBooking() {
 }
 
 function getRouteMeta() {
+  if (state.route === 'directory-detail') {
+    const detailMeta = getDirectoryDetailMeta(store, state.directory.detail);
+
+    if (detailMeta) {
+      return detailMeta;
+    }
+  }
+
   const meta = {
     home: {
       title: 'Dentique Care',
@@ -102,6 +115,10 @@ function getRouteMeta() {
     directory: {
       title: 'Разделы',
       subtitle: 'Клиники, врачи и профиль',
+    },
+    'directory-detail': {
+      title: 'Профиль',
+      subtitle: 'Информационный раздел',
     },
   };
 
@@ -446,6 +463,8 @@ function renderScreen() {
       return renderConfirmationScreen(store, state.booking);
     case 'directory':
       return renderDirectoryScreen(store, state.directory);
+    case 'directory-detail':
+      return renderDirectoryDetailScreen(store, state.directory);
     default:
       return renderHomeScreen(store, state.booking);
   }
@@ -459,6 +478,10 @@ function render() {
 }
 
 function setRoute(route) {
+  if (route === 'directory') {
+    state.directory.detail = null;
+  }
+
   state.route = route;
   render();
 }
@@ -482,6 +505,7 @@ function goBack() {
     'booking-datetime': 'booking-doctor',
     'booking-confirm': 'booking-datetime',
     directory: 'home',
+    'directory-detail': 'directory',
   };
 
   setRoute(backMap[state.route] ?? 'home');
@@ -604,7 +628,13 @@ function handleAction(target) {
     }
     case 'show-directory-tab':
       state.directory.tab = actionElement.dataset.tab || 'clinics';
+      state.directory.detail = null;
       setRoute('directory');
+      return true;
+    case 'open-directory-detail':
+      state.directory.tab = 'profile';
+      state.directory.detail = actionElement.dataset.detail || null;
+      setRoute('directory-detail');
       return true;
     case 'start-consultation-flow':
       startConsultationFlow();
@@ -614,6 +644,7 @@ function handleAction(target) {
       return true;
     case 'set-directory-tab':
       state.directory.tab = actionElement.dataset.tab || 'clinics';
+      state.directory.detail = null;
       render();
       return true;
     case 'select-category':

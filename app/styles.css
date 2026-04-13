@@ -1444,6 +1444,118 @@ a {
   margin-top: var(--space-4);
 }
 
+.profile-link-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.profile-link-card {
+  width: 100%;
+  padding: 18px 20px;
+  text-align: left;
+}
+
+.profile-link-card .directory-card__head {
+  align-items: center;
+}
+
+.profile-link-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: 999px;
+  background: rgba(20, 32, 46, 0.05);
+  color: var(--text-soft);
+}
+
+.detail-list-card {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(20, 32, 46, 0.04);
+}
+
+.detail-list-card__title {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.detail-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.detail-list__item {
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(20, 32, 46, 0.04);
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.review-list {
+  margin-top: 16px;
+}
+
+.review-snippet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.review-snippet__meta {
+  display: block;
+  margin-top: 10px;
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 620;
+}
+
+.detail-steps {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: detail-step;
+}
+
+.detail-steps__item {
+  position: relative;
+  padding: 16px 16px 16px 52px;
+  border-radius: 10px;
+  background: rgba(20, 32, 46, 0.04);
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.6;
+  counter-increment: detail-step;
+}
+
+.detail-steps__item::before {
+  content: counter(detail-step);
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 12px;
+  font-weight: 760;
+}
+
 .profile-stat {
   padding: 16px;
   border-radius: 10px;

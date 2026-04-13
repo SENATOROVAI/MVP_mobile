@@ -611,6 +611,33 @@ export const quickActions = [
   },
 ];
 
+export const profileSections = [
+  {
+    id: 'appointments-history',
+    title: 'История приёмов',
+    subtitle: 'Запланированные и завершённые визиты в одном списке',
+    iconName: 'icon-appointment',
+  },
+  {
+    id: 'promotions',
+    title: 'Акции',
+    subtitle: 'Актуальные предложения и специальные форматы записи',
+    iconName: 'icon-check',
+  },
+  {
+    id: 'reviews-consultation',
+    title: 'Отзывы и консультация',
+    subtitle: 'Отзывы пациентов и типовые вопросы перед записью',
+    iconName: 'icon-search',
+  },
+  {
+    id: 'tax-deduction',
+    title: 'Налоговый вычет',
+    subtitle: 'Статус справки и порядок оформления документов',
+    iconName: 'icon-profile',
+  },
+];
+
 export const treatmentPlan = [
   {
     id: 'tooth-16',
@@ -662,6 +689,28 @@ export const chatQuickReplies = [
   'Как оформить налоговый вычет?',
 ];
 
+export const profileSectionContent = {
+  reviewsConsultation: {
+    intro:
+      'Раздел собран как спокойная текстовая справка: здесь есть примеры отзывов пациентов и понятный сценарий, как можно задать вопрос перед записью.',
+    adminNote:
+      'Если вопрос касается стоимости, подготовки к визиту или свободных окон, обращение можно передать администратору для уточнения без отдельной формы внутри MVP.',
+    faqTitle: 'Типовые вопросы перед записью',
+    reviewsTitle: 'Примеры отзывов пациентов',
+  },
+  taxDeduction: {
+    intro:
+      'В MVP это информационный раздел без подачи заявки: пользователь видит статус справки о стоимости лечения, ставку вычета и список документов, которые уже понадобятся для оформления.',
+    steps: [
+      'Проверьте, что в профиле доступна справка о стоимости лечения и договор.',
+      'Соберите подтверждение оплаты и медицинские документы по лечению.',
+      'Передайте комплект документов в налоговую инспекцию или через личный кабинет ФНС.',
+    ],
+    note:
+      'Если справка ещё не готова, администратор клиники сможет подсказать сроки подготовки и состав финального пакета документов.',
+  },
+};
+
 const data = {
   serviceCategories,
   clinics,
@@ -670,9 +719,11 @@ const data = {
   appointments,
   promos,
   quickActions,
+  profileSections,
   treatmentPlan,
   warranties,
   chatQuickReplies,
+  profileSectionContent,
 };
 
 export default data;
